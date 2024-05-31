@@ -13,7 +13,7 @@ export class EmployeService {
 
   constructor(private http: HttpClient) {}
 
-  serachEmployees(query: string) {
+  searchEmployees(query: string) {
     if (!query) {
       this.filteredEmployee = this.employees;
     } else {
@@ -53,5 +53,9 @@ export class EmployeService {
 
   updateEmployee(body: Employee, employeeId: string): Observable<any> {
     return this.http.put(`${API_URL.UPDATE_EMPLOYEE}/${employeeId}`, body);
+  }
+
+  deleteEmployee(employeeId: string): Observable<any> {
+    return this.http.delete(`${API_URL.DELETE_EMPLOYEE}/${employeeId}`);
   }
 }

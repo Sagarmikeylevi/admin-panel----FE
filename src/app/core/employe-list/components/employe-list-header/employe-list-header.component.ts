@@ -13,7 +13,7 @@ export class EmployeListHeaderComponent {
 
   onSearch() {
     setTimeout(() => {
-      this.employeService.serachEmployees(this.searchQuery);
+      this.employeService.searchEmployees(this.searchQuery);
     }, 300);
   }
 }

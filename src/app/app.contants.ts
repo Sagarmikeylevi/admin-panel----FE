@@ -5,6 +5,7 @@ export const API_URL = {
   GET_ALL_EMPLOYEES: `${apiURL}/employee/allEmployees`,
   ADD_EMPLOYEE: `${apiURL}/employee/create`,
   UPDATE_EMPLOYEE: `${apiURL}/employee/update`,
+  DELETE_EMPLOYEE: `${apiURL}/employee/delete`,
 };
 
 export const NAV_LIST = [
