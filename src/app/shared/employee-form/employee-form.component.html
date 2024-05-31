@@ -7,7 +7,9 @@
     <mat-label>Name</mat-label>
     <input
       matInput
-      placeholder="Enter your name"
+      [placeholder]="
+        type === 'Update' ? updatedEmployee.name : 'Enter your name'
+      "
       class="w-[80%]"
       name="name"
       ngModel
@@ -26,7 +28,9 @@
     <mat-label>Position</mat-label>
     <input
       matInput
-      placeholder="Full Stack Developer"
+      [placeholder]="
+        type === 'Update' ? updatedEmployee.position : 'Full Stack Developer'
+      "
       name="position"
       ngModel
       required
@@ -42,7 +46,7 @@
     <input
       type="number"
       matInput
-      placeholder="40,0000"
+      [placeholder]="type === 'Update' ? updatedEmployee.salary + '' : '40,000'"
       name="salary"
       ngModel
       required
@@ -57,6 +61,14 @@
     type="submit"
     class="bg-black w-[80%] py-3 text-white rounded-md mt-2 uppercase"
   >
-    {{ loading ? "Adding..." : "Add" }}
+    {{
+      type === "Update"
+        ? loading
+          ? "Updating..."
+          : type
+        : loading
+        ? "Adding..."
+        : type
+    }}
   </button>
 </form>

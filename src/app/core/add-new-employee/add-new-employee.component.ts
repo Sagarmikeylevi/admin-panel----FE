@@ -8,6 +8,7 @@ import { ErrorService } from 'src/app/services/error.service';
   styleUrls: ['./add-new-employee.component.css'],
 })
 export class AddNewEmployeeComponent {
+  type: string = 'Add';
   constructor(private errorService: ErrorService) {}
 
   get formError(): Error {

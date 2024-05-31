@@ -3,7 +3,6 @@ import { Employee } from '../models/employee';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from '../app.contants';
 import { Observable } from 'rxjs';
-import { Error } from '../models/error';
 
 @Injectable({
   providedIn: 'root',
@@ -20,9 +19,9 @@ export class EmployeService {
     } else {
       this.filteredEmployee = this.employees.filter(
         (employee) =>
-          employee.id === query ||
-          employee.name.toLowerCase() === query.toLowerCase() ||
-          employee.position.toLowerCase() === query.toLowerCase()
+          employee.id.includes(query.toLowerCase()) ||
+          employee.name.toLowerCase().includes(query.toLowerCase()) ||
+          employee.position.toLowerCase().includes(query.toLowerCase())
       );
     }
   }
@@ -36,11 +35,23 @@ export class EmployeService {
     return this.filteredEmployee;
   }
 
+  getEmployeeById(employeeId: string): Employee | null {
+    const employee = this.employees.find(
+      (employee) => employee.id === employeeId
+    );
+    if (!employee) return null;
+    return employee;
+  }
+
   getAllEmployees(): Observable<any> {
     return this.http.get(API_URL.GET_ALL_EMPLOYEES);
   }
 
   addEmployee(body: Employee): Observable<any> {
     return this.http.post(API_URL.ADD_EMPLOYEE, body);
+  }
+
+  updateEmployee(body: Employee, employeeId: string): Observable<any> {
+    return this.http.put(`${API_URL.UPDATE_EMPLOYEE}/${employeeId}`, body);
   }
 }
