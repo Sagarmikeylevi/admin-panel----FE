@@ -1,9 +1,32 @@
 <section class="w-screen h-screen flex justify-center items-center">
-  <div class="px-8 py-6 bg-slate-200 shadow-md">
-    <form class="flex flex-col justify-center items-center">
+  <div
+    class="px-8 py-6 bg-slate-200 shadow-md"
+    *ngIf="authError.state === false; else showError"
+  >
+    <form
+      #f="ngForm"
+      (ngSubmit)="onSubmit(f)"
+      class="flex flex-col justify-center items-center"
+    >
       <mat-form-field class="w-[24rem]">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="pat@example.com" name="email" />
+        <input
+          matInput
+          placeholder="pat@example.com"
+          name="username"
+          ngModel
+          required
+          email
+          #username="ngModel"
+        />
+        <mat-error
+          *ngIf="username.invalid && (username.dirty || username.touched)"
+        >
+          <span *ngIf="username.errors?.['required']">Email is required.</span>
+          <span *ngIf="username.errors?.['email']"
+            >Email must be a valid email address.</span
+          >
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="w-[24rem]">
         <mat-label>Enter your password</mat-label>
@@ -12,6 +35,9 @@
           placeholder="Enter you password"
           [type]="hide ? 'password' : 'text'"
           name="password"
+          ngModel
+          required
+          #password="ngModel"
         />
         <button
           mat-icon-button
@@ -19,16 +45,29 @@
           type="button"
           [attr.aria-label]="'Hide password'"
           [attr.aria-pressed]="hide"
+          (click)="changeHide()"
         >
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
+        <mat-error
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+        >
+          <span *ngIf="password.errors?.['required']"
+            >Password is required.</span
+          >
+        </mat-error>
       </mat-form-field>
       <button
         type="submit"
-        class="bg-black w-[25rem] py-4 text-white rounded-md mt-2 animate"
+        [disabled]="f.invalid || loading"
+        class="bg-black w-[25rem] py-4 text-white rounded-md mt-2"
       >
-        Login
+        {{ loading ? "Loging in..." : "Login" }}
       </button>
     </form>
   </div>
 </section>
+
+<ng-template #showError>
+  <app-error [message]="authError.message"></app-error>
+</ng-template>
