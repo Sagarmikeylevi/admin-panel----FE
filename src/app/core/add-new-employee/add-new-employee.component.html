@@ -1,36 +1,6 @@
 <section class="w-[75vw] h-full flex justify-center items-center">
-  <div
-    class="w-[60%] py-8 bg-slate-300 rounded-md shadow-md flex flex-col gap-6"
-  >
+  <div class="w-[60%] py-6 bg-slate-300 rounded-md shadow-md flex flex-col">
     <h1 class="text-center text-lg font-thin">Add New Employees</h1>
-    <form class="flex flex-col justify-center items-center">
-      <mat-form-field class="w-[80%]">
-        <mat-label>Name</mat-label>
-        <input
-          matInput
-          placeholder="Enter your name"
-          class="w-[80%]"
-          name="name"
-        />
-      </mat-form-field>
-      <mat-form-field class="w-[80%]">
-        <mat-label>Position</mat-label>
-        <input matInput placeholder="Full Stack Developer" name="position" />
-      </mat-form-field>
-
-      <mat-form-field class="w-[80%]">
-        <mat-label>Salary</mat-label>
-        <input matInput placeholder="40,0000" name="salary" />
-      </mat-form-field>
-
-      <button
-        type="submit"
-        class="bg-black w-[80%] py-3 text-white rounded-md mt-2 uppercase"
-      >
-        Add
-      </button>
-    </form>
+    <app-employee-form></app-employee-form>
   </div>
 </section>
-
-<!-- name: 'Talha Anjum', position: 'Intern', salary: 15000 -->

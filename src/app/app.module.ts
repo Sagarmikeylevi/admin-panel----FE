@@ -9,6 +9,8 @@ import { MatTableModule } from '@angular/material/table';
 import { EmployeListComponent } from './core/employe-list/employe-list.component';
 import { AddNewEmployeeComponent } from './core/add-new-employee/add-new-employee.component';
 import { MatInputModule } from '@angular/material/input';
+import { EmployeeFormComponent } from './shared/employee-form/employee-form.component';
+import { UpdateEmployeeComponent } from './core/update-employee/update-employee.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { MatInputModule } from '@angular/material/input';
     SidebarComponent,
     EmployeListComponent,
     AddNewEmployeeComponent,
+    EmployeeFormComponent,
+    UpdateEmployeeComponent,
   ],
   imports: [
     BrowserModule,
