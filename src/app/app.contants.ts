@@ -1,6 +1,18 @@
 export const NAV_LIST = [
-  'Employee List',
-  'Add New Employee',
-  'Update Employee',
-  'Delete Employee',
+  {
+    route: 'employee-list',
+    title: 'Employee List',
+  },
+  {
+    route: 'add',
+    title: 'Add New Employee',
+  },
+  {
+    route: 'update',
+    title: 'Update Employee',
+  },
+  {
+    route: 'delete',
+    title: 'Delete Employee',
+  },
 ];

@@ -1,19 +1,21 @@
 <section
   class="w-[25vw] h-screen bg-black flex flex-col items-center py-6 gap-[5%]"
 >
-  <header
+  <a
+    routerLink="/"
     class="w-[90%] h-[30%] flex justify-center items-center border-[1px] border-slate-100 rounded-md"
   >
     <h1 class="text-xl text-white font-semibold">Admin Panel</h1>
-  </header>
+  </a>
 
   <ul class="w-[90%] h-[65%] flex flex-col gap-4 items-center">
-    <li
-      class="w-[80%] py-4 text-white border-[1px] border-slate-100 rounded-md tetx-lg font-thin hover:bg-white hover:text-black transition-all duration-200 ease-in-out cursor-pointer tracking-wide text-center"
+    <a
+      class="w-[80%] py-4 text-white border-[1px] border-slate-100 rounded-md text-lg font-thin hover:bg-white hover:text-black transition-all duration-200 ease-in-out cursor-pointer tracking-wide text-center"
       *ngFor="let list of navList"
+      [routerLink]="list.route"
     >
-      {{ list }}
-    </li>
+      {{ list.title }}
+    </a>
   </ul>
 
   <button class="mt-4 px-8 py-4 rounded-md bg-white text-black text-sm">

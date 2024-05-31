@@ -11,6 +11,8 @@ import { AddNewEmployeeComponent } from './core/add-new-employee/add-new-employe
 import { MatInputModule } from '@angular/material/input';
 import { EmployeeFormComponent } from './shared/employee-form/employee-form.component';
 import { UpdateEmployeeComponent } from './core/update-employee/update-employee.component';
+import { DeleteEmployeeComponent } from './core/delete-employee/delete-employee.component';
+import { AdmindashboardComponent } from './core/admindashboard/admindashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { UpdateEmployeeComponent } from './core/update-employee/update-employee.
     AddNewEmployeeComponent,
     EmployeeFormComponent,
     UpdateEmployeeComponent,
+    DeleteEmployeeComponent,
+    AdmindashboardComponent,
   ],
   imports: [
     BrowserModule,

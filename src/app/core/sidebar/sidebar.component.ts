@@ -7,5 +7,8 @@ import { NAV_LIST } from 'src/app/app.contants';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent {
-  navList: string[] = NAV_LIST;
+  navList: {
+    route: string;
+    title: string;
+  }[] = NAV_LIST;
 }
