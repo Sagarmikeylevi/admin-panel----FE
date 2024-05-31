@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { NAV_LIST } from 'src/app/app.contants';
 
 @Component({
@@ -11,4 +12,14 @@ export class SidebarComponent {
     route: string;
     title: string;
   }[] = NAV_LIST;
+
+  showSidebar: boolean = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showSidebar = !['/login'].includes(event.urlAfterRedirects);
+      }
+    });
+  }
 }

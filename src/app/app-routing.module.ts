@@ -8,10 +8,39 @@ import { AdmindashboardComponent } from './core/admindashboard/admindashboard.co
 
 const routes: Routes = [
   { path: '', component: AdmindashboardComponent },
-  { path: 'employee-list', component: EmployeListComponent },
-  { path: 'add', component: AddNewEmployeeComponent },
-  { path: 'update', component: UpdateEmployeeComponent },
-  { path: 'delete', component: DeleteEmployeeComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./core/login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'employee-list',
+    loadChildren: () =>
+      import('./core/employe-list/employe-list.module').then(
+        (m) => m.EmployeListModule
+      ),
+  },
+  {
+    path: 'add',
+    loadChildren: () =>
+      import('./core/add-new-employee/add-new-employee.module').then(
+        (m) => m.AddNewEmployeeModule
+      ),
+  },
+  {
+    path: 'update',
+    loadChildren: () =>
+      import('./core/update-employee/update-employee.module').then(
+        (m) => m.UpdateEmployeeModule
+      ),
+  },
+  {
+    path: 'delete',
+    loadChildren: () =>
+      import('./core/delete-employee/delete-employee.module').then(
+        (m) => m.DeleteEmployeeModule
+      ),
+  },
 ];
 
 @NgModule({
