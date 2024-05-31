@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-error',
@@ -9,9 +10,9 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ErrorComponent {
   @Input() message: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private errorService: ErrorService) {}
 
   onNormalState() {
-    this.authService.backToNormalState();
+    this.errorService.backToNormalState();
   }
 }

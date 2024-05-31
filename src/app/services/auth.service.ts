@@ -9,7 +9,6 @@ import { Error } from '../models/error';
   providedIn: 'root',
 })
 export class AuthService {
-  private authError: Error = { state: false, message: '' };
   constructor(private http: HttpClient) {}
 
   setToken(token: string) {
@@ -18,19 +17,6 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('token');
-  }
-
-  setAuthError(message: string) {
-    this.authError.state = true;
-    this.authError.message = message;
-  }
-
-  getAuthError(): Error {
-    return this.authError;
-  }
-
-  backToNormalState() {
-    this.authError.state = false;
   }
 
   login(body: Admin): Observable<any> {

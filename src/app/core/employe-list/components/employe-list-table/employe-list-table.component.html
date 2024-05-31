@@ -1,5 +1,6 @@
 <section
   class="absolute top-[15%] ml-[5%] w-[90%] h-[80%] max-h-[80%] overflow-hidden"
+  *ngIf="loading === false; else showLoading"
 >
   <div class="overflow-auto h-full">
     <table
@@ -40,3 +41,7 @@
     </table>
   </div>
 </section>
+
+<ng-template #showLoading>
+  <app-loading [message]="loadingMessage"> </app-loading
+></ng-template>

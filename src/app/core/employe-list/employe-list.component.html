@@ -1,4 +1,14 @@
-<section class="w-[75vw] h-full relative">
+<section
+  class="w-[75vw] h-full relative"
+  *ngIf="employeeError.state === false; else showError"
+>
   <app-employe-list-header></app-employe-list-header>
+
   <app-employe-list-table></app-employe-list-table>
 </section>
+
+<ng-template #showError>
+  <section class="w-[75vw] h-full flex justify-center items-center">
+    <app-error [message]="employeeError.message"></app-error>
+  </section>
+</ng-template>

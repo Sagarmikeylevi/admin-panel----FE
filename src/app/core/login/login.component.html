@@ -1,8 +1,8 @@
-<section class="w-screen h-screen flex justify-center items-center">
-  <div
-    class="px-8 py-6 bg-slate-200 shadow-md"
-    *ngIf="authError.state === false; else showError"
-  >
+<section
+  class="w-screen h-screen flex justify-center items-center"
+  *ngIf="authError.state === false; else showError"
+>
+  <div class="px-8 py-6 bg-slate-200 shadow-md">
     <form
       #f="ngForm"
       (ngSubmit)="onSubmit(f)"
@@ -69,5 +69,7 @@
 </section>
 
 <ng-template #showError>
-  <app-error [message]="authError.message"></app-error>
+  <section class="w-screen h-screen flex justify-center items-center">
+    <app-error [message]="authError.message"></app-error>
+  </section>
 </ng-template>

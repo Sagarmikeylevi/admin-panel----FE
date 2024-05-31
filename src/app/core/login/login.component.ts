@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Admin } from 'src/app/models/admin';
 import { Error } from 'src/app/models/error';
 import { AuthService } from 'src/app/services/auth.service';
+import { ErrorService } from 'src/app/services/error.service';
 
 @Component({
   selector: 'app-login',
@@ -13,10 +14,14 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   hide: boolean = true;
   loading: boolean = false;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private errorService: ErrorService
+  ) {}
 
   get authError(): Error {
-    return this.authService.getAuthError();
+    return this.errorService.getError();
   }
 
   onSubmit(f: NgForm) {
@@ -29,7 +34,7 @@ export class LoginComponent {
         this.router.navigateByUrl('/');
       },
       (error) => {
-        this.authService.setAuthError(
+        this.errorService.setError(
           'Unauthorized, only admins can access this page.'
         );
         this.loading = false;

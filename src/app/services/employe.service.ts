@@ -3,6 +3,7 @@ import { Employee } from '../models/employee';
 import { HttpClient } from '@angular/common/http';
 import { API_URL } from '../app.contants';
 import { Observable } from 'rxjs';
+import { Error } from '../models/error';
 
 @Injectable({
   providedIn: 'root',
@@ -37,5 +38,9 @@ export class EmployeService {
 
   getAllEmployees(): Observable<any> {
     return this.http.get(API_URL.GET_ALL_EMPLOYEES);
+  }
+
+  addEmployee(body: Employee): Observable<any> {
+    return this.http.post(API_URL.ADD_EMPLOYEE, body);
   }
 }

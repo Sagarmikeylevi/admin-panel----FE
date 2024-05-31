@@ -1,22 +1,62 @@
-<form class="flex flex-col justify-center items-center">
+<form
+  #f="ngForm"
+  (ngSubmit)="onSubmit(f)"
+  class="flex flex-col justify-center items-center"
+>
   <mat-form-field class="w-[80%]">
     <mat-label>Name</mat-label>
-    <input matInput placeholder="Enter your name" class="w-[80%]" name="name" />
+    <input
+      matInput
+      placeholder="Enter your name"
+      class="w-[80%]"
+      name="name"
+      ngModel
+      required
+      minlength="3"
+      #name="ngModel"
+    />
+    <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+      <span *ngIf="name.errors?.['required']">Name is required.</span>
+      <span *ngIf="name.errors?.['minlength']"
+        >Name must be at least 3 characters long.</span
+      >
+    </mat-error>
   </mat-form-field>
   <mat-form-field class="w-[80%]">
     <mat-label>Position</mat-label>
-    <input matInput placeholder="Full Stack Developer" name="position" />
+    <input
+      matInput
+      placeholder="Full Stack Developer"
+      name="position"
+      ngModel
+      required
+      #position="ngModel"
+    />
+    <mat-error *ngIf="position.invalid && (position.dirty || position.touched)">
+      <span *ngIf="position.errors?.['required']">Position is required.</span>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="w-[80%]">
     <mat-label>Salary</mat-label>
-    <input matInput placeholder="40,0000" name="salary" />
+    <input
+      type="number"
+      matInput
+      placeholder="40,0000"
+      name="salary"
+      ngModel
+      required
+      #salary="ngModel"
+    />
+    <mat-error *ngIf="salary.invalid && (salary.dirty || salary.touched)">
+      <span *ngIf="salary.errors?.['required']">Salary is required.</span>
+    </mat-error>
   </mat-form-field>
 
   <button
     type="submit"
     class="bg-black w-[80%] py-3 text-white rounded-md mt-2 uppercase"
   >
-    Add
+    {{ loading ? "Adding..." : "Add" }}
   </button>
 </form>
